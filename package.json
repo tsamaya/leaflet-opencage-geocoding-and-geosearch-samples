@@ -1,0 +1,26 @@
+{
+  "name": "leaflet-opencage-geocoding-sample",
+  "version": "1.0.0",
+  "description": "How to use [OpenCage Geocoding Control for Leaflet](https://github.com/OpenCageData/leaflet-opencage-geocoding).",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsamaya/leaflet-opencage-geocoding-sample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tsamaya/leaflet-opencage-geocoding-sample/issues"
+  },
+  "homepage": "https://github.com/tsamaya/leaflet-opencage-geocoding-sample#readme",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

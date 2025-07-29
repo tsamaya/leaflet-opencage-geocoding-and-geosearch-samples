@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no initial-scale=1, maximum-scale=1"
+    />
+
+    <title>OpenCage Geocoding Control for Leaflet</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@2.0.0-alpha/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencage-geocoding@v2.0.0/dist/css/L.Control.OpenCageGeocoding.min.css"
+    />
+
+    <script src="https://unpkg.com/leaflet@2.0.0-alpha/dist/leaflet-global.js"></script>
+    <script src="./leaflet-v1-polyfill.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencage-geocoding@v2.0.0/dist/js/L.Control.OpenCageGeocoding.min.js"></script>
+    <style type="text/css">
+      body {
+        margin: 0;
+      }
+
+      #map {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <script type="text/javascript">
+      applyAllPolyfills();
+
+      const map = new L.Map('map').setView([51.505, -0.09], 13);
+
+      const tiles = new L.TileLayer(
+        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }
+      ).addTo(map);
+
+      const options = {
+        key: 'your-api-key-here',
+        limit: 10,
+      };
+      const control = L.Control.openCageGeocoding(options).addTo(map);
+    </script>
+  </body>
+</html>
