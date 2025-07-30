@@ -1,4 +1,4 @@
-# leaflet-opencage-geocoding-sample
+# leaflet-opencage-geocoding-and-geosearch-samples.git
 
 ## Objective
 

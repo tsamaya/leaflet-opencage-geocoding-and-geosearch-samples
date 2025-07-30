@@ -1,61 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS files need to be in the head section -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@2.0.0-alpha/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@opencage/leaflet-opencage-geosearch/leaflet-opencage-geosearch.css"
+    />
+  </head>
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- CSS files need to be in the head section -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@2.0.0-alpha/dist/leaflet.css" />
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@opencage/leaflet-opencage-geosearch/leaflet-opencage-geosearch.css" />
-</head>
+  <body>
+    <!-- add a map element anywhere on the map -->
+    <div id="map1" style="width: 750px; height: 500px"></div>
 
-<body>
+    <!-- script can be either in the head section or anywhere below the map -->
+    <script src="https://unpkg.com/leaflet@2.0.0-alpha/dist/leaflet-global.js"></script>
+    <script src="./leaflet-v1-polyfill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@opencage/geosearch-bundle"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@opencage/leaflet-opencage-geosearch"></script>
+    <script>
+      // apply polyfills for Leaflet 1.x compatibility
+      applyAllPolyfills();
 
-  <!-- add a map element anywhere on the map -->
-  <div id="map1" style="width:750px; height:500px;"></div>
+      // wait until everything is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        // create and initialize leaflet map object
+        const map = L.map('map1').setView([40, 0], 5);
 
-  <!-- script can be either in the head section or anywhere below the map -->
-  <script src="https://unpkg.com/leaflet@2.0.0-alpha/dist/leaflet-global.js"></script>
-  <script src="./leaflet-v1-polyfill.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@opencage/geosearch-bundle"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@opencage/leaflet-opencage-geosearch"></script>
-  <script>
-    // apply polyfills for Leaflet 1.x compatibility
-    applyAllPolyfills();
+        // load map tiles
+        L.tileLayer(
+          'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+          {
+            attribution:
+              'Data <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+              'Map tiles &copy; <a href="https://carto.com/attribution">CARTO</a>',
+          }
+        ).addTo(map);
 
-    // wait until everything is loaded
-    document.addEventListener('DOMContentLoaded', () => {
+        // geosearch options
 
-      // create and initialize leaflet map object
-      const map = L.map('map1').setView([40, 0], 5);
+        const options = {
+          key: 'YOUR-GEOSEARCH-KEY',
+          // you will need to become a customer to get a geosearch key
 
-      // load map tiles
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-        attribution: 'Data <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, '
-          + 'Map tiles &copy; <a href="https://carto.com/attribution">CARTO</a>'
-      }).addTo(map);
+          position: 'topright',
+          // see possible values: https://leafletjs.com/reference.html#control-position, default is 'topright'
 
-      // geosearch options
+          // placeholder: 'Type here to search for places', default is 'Search for places'
 
-      const options = {
-        key: 'YOUR-GEOSEARCH-KEY',
-        // you will need to become a customer to get a geosearch key
+          // defaultZoomLevel: 10, // zoom level, default is 13
 
-        position: 'topright',
-        // see possible values: https://leafletjs.com/reference.html#control-position, default is 'topright'
+          // customMarkerOptions: {}, // Optional Leaflet Marker Options https://leafletjs.com/reference.html#marker-option
+        };
 
-        // placeholder: 'Type here to search for places', default is 'Search for places'
-
-        // defaultZoomLevel: 10, // zoom level, default is 13
-
-        // customMarkerOptions: {}, // Optional Leaflet Marker Options https://leafletjs.com/reference.html#marker-option
-
-      };
-
-      // add geosearch to the map
-      const geosearchControl = L.Control.openCageGeosearch(options).addTo(map);
-    });
-  </script>
-</body>
-
+        // add geosearch to the map
+        const geosearchControl =
+          L.Control.openCageGeosearch(options).addTo(map);
+      });
+    </script>
+  </body>
 </html>
