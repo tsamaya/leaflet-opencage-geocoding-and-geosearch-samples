@@ -4,7 +4,7 @@
 
 How to use [OpenCage Geocoding Control for Leaflet](https://github.com/OpenCageData/leaflet-opencage-geocoding).
 
-## Usage with Leaflet 1.x
+## Geocoding usage with Leaflet 1.x
 
 Load LeafletJS 1.x CSS and Javascript files:
 
@@ -50,9 +50,9 @@ const options = {
 const control = L.Control.openCageGeocoding(options).addTo(map);
 ```
 
-Test it with `open leaflet-1.x.html`, don't forget to set your API key
+Test it with `open geocoding_leaflet-1.x.html`, don't forget to set your API key
 
-## Usage with Leaflet 2.0.0-alpha
+## Geocoding usage with Leaflet 2.0.0-alpha
 
 Leaflet 2 support ESM and tree shaking, check the new feature on the announcement [page](https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html). The major change is the global L is no longer part of the core package, though it’s still available in the bundled version leaflet-global.js for backward compatibility.
 
@@ -103,4 +103,12 @@ const options = {
 const control = L.Control.openCageGeocoding(options).addTo(map);
 ```
 
-Test it with `leaflet-2.x-global-script.htm`, don't forget to set your API key
+Test it with `open geocoding_leaflet-2.x-global-script.html`, don't forget to set your API key
+
+## Geosearch usage with Leaflet 1.x
+
+Test it with `open geosearch_leaflet-1.x.html`, don't forget to set your Geosearch key
+
+## Geosearch usage with Leaflet 2.0.0-alpha
+
+Test it with `open geosearch_leaflet-2.x-global-script.html`, don't forget to set your Geosearch key
